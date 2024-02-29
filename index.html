@@ -1,0 +1,139 @@
+<!-- Created by Muallim -->
+
+<!Doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Form</title>
+  <style>
+      /* Created by Muallim */
+.container{
+  justify-content: center;
+  align-items: center;
+  background-color: #000814;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+  rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  margin-top: 20px;
+}
+body{
+  text-align: center; 
+  background: #e3e3e3;
+  padding: 10px 10px;
+}
+.main h1{
+  font-size: 36px;
+  color: white;
+}
+.age_info{
+  flex-direction: column;
+}
+.age_info button{
+  font-size: 16px;
+  margin-top: 25px;
+  background: #00171F;
+  padding: 8px;
+  color: white;
+}
+.box_age h4{
+  font-size: 21px;
+  color: white;
+}
+.box_age input{
+  margin-top: -10px;
+  font-weight: 500;
+  font-size: 18;
+  padding: 3px;
+}
+#total{
+  color: #F4F3EE;
+  font-size: 22px;
+  padding: 10px;
+}
+::placeholder{
+  color: grey;
+  font-family: sans-serif;
+  font-weight: 400;
+}
+@media(width<400px){
+  #total{
+      font-size: 18px;
+      text-align: center;
+      padding-left: 10px;
+      padding-right: 10px;
+  }
+}
+  </style>
+  </head>
+  <body>
+   <script src="index.js"></script>
+    <div class="container">
+    <div class="main">
+      <h1>Age Calculator</h1>
+      <p style="color: #fff; font-size: 30px;">Enter your date of birth to see your ages.</p>
+    </div><br>
+    <div class="box_age">
+      <h4>Day</h4>
+      <input type="text" placeholder="DD" 
+  minlength="1" maxlength="2" id="date" required>
+    </div><br>
+    <div class="box_age">
+       <h4>Month</h4>
+       <input type="text" placeholder="MM"
+  minlength="1" maxlength="2" id="month" required>
+    </div><br>
+    <div class="box_age">
+        <h4>Year</h4>
+        <input type="text" placeholder="YYYY"
+  minlength="4" maxlength="4" id="year" required>
+     </div><br>
+     <div class="age_info">
+        <button onclick="age()">Submit</button>
+     </div>
+     <h3 id="total"></h3>
+     <footer style="color: #fff; margin-top: 30px; margin-bottom: 0px;">
+      &copy; <i>2024 Muallim2000</i>
+     </footer> 
+</div>  
+<script>
+  // Created by Muallim
+
+  function age(){
+    let date = document.getElementById("date");
+    let month = document.getElementById("month");
+    let year = document.getElementById("year");
+    let total = document.getElementById("total");
+
+    const d = new Date()
+    let d2 = d.getDate();
+    let m2 = 1 + d.getMonth();
+    let y2 = d.getFullYear();
+    let months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+    if(date.value > d2){
+     d2 = d2 + months[m2 - 1];
+     m2 = m2 - 1;
+}
+    if(month.value > m2){
+     m2 = m2 + 12;
+     y2 = y2 - 1;
+}
+   birth_year = y2;
+   a = d2 - date.value;
+   b = m2 - month.value;
+   c = birth_year - year.value;
+
+  if(date.value == "" || month.value == "" || year.value == ""){
+    alert("Error...");
+} else if(month.value == "09" || month.value == "9" || month.value == "12" || month.value == "07" || month.value == "7"){
+    alert("I knew it!");
+    total.innerHTML = "Your Age is" + " " + c + " " + "Years" + " " + b + " "  + "Months" + " " + a + " " + "Days";
+} else{
+    total.innerHTML = "Your Age is" + " " + c + " " + "Years" + " " + b + " " + "Months" + " " + a + " " + "Days";
+    alert("Your Age is" + " " + c + " " + "Years" + " " + b + " " + "Months" + " " + a + " " + "Days");
+}
+}
+</script>
+</body>
+</html>
